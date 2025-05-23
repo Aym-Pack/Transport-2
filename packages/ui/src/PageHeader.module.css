@@ -1,0 +1,21 @@
+/* packages/ui/src/PageHeader.module.css */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem; /* Spacing between action elements */
+}

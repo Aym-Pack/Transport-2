@@ -1,0 +1,57 @@
+/* packages/ui/src/AdminLayout.module.css */
+.adminLayout {
+  display: flex;
+  flex-direction: column; /* Stack header on top of sidebar/main content */
+  min-height: 100vh;
+  background-color: #f4f6f8; /* Light gray background for the overall layout */
+}
+
+.header {
+  width: 100%;
+  padding: 1rem;
+  background-color: #ffffff; /* White background for header */
+  border-bottom: 1px solid #e0e0e0; /* Light border for separation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  z-index: 10; /* Ensure header is above other content if overlapping */
+  box-sizing: border-box;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-grow: 1; /* Allows this wrapper to take up remaining vertical space */
+}
+
+.sidebar {
+  width: 240px; /* Standard sidebar width */
+  background-color: #ffffff; /* White background for sidebar */
+  padding: 1.5rem 1rem;
+  border-right: 1px solid #e0e0e0; /* Light border for separation */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  overflow-y: auto; /* Scroll if content exceeds height */
+  box-sizing: border-box;
+}
+
+.mainContent {
+  flex-grow: 1; /* Takes up remaining horizontal space */
+  padding: 1.5rem 2rem; /* Padding around the main content area */
+  overflow-y: auto; /* Scroll if content exceeds height */
+  box-sizing: border-box;
+}
+
+/* Responsive adjustments (optional basic example) */
+@media (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column; /* Stack sidebar on top of main content on small screens */
+  }
+
+  .sidebar {
+    width: 100%; /* Full width for sidebar */
+    height: auto; /* Auto height */
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0; /* Border at the bottom when stacked */
+  }
+
+  .mainContent {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+}
