@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# .husky/pre-commit
+#
+# Placeholder for pre-commit checks (e.g., linting, formatting, tests).
+# Example: pnpm lint-staged
+
+echo "husky: pre-commit hook (placeholder)"
+exit 0

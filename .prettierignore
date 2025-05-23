@@ -1,0 +1,16 @@
+# Add files and directories to ignore for Prettier here
+/node_modules
+/.pnpm-store
+/dist
+/.next
+/out
+/build
+supabase/.branches
+supabase/.temp
+supabase/generated
+supabase/functions/.output
+supabase/functions/node_modules
+.env
+.env*.local
+*.bak
+*.tmp
