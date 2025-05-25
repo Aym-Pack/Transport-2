@@ -42,6 +42,12 @@ export default function DashboardLayout({
           <li><Link href="/dashboard/vehicles" style={navLinkStyles(pathname.startsWith('/dashboard/vehicles'))}>Vehicles</Link></li>
           <li><Link href="/dashboard/currencies" style={navLinkStyles(pathname.startsWith('/dashboard/currencies'))}>Currencies</Link></li>
           <li><Link href="/dashboard/exchange-rates" style={navLinkStyles(pathname.startsWith('/dashboard/exchange-rates'))}>Exchange Rates</Link></li>
+
+          {/* User Auth Links */}
+          <li style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid #ddd' }}><span style={{ fontSize: '0.9em', color: '#555' }}>User Authorization</span></li>
+          <li><Link href="/dashboard/users" style={navLinkStyles(pathname.startsWith('/dashboard/users'))}>User Management</Link></li>
+          <li><Link href="/dashboard/roles" style={navLinkStyles(pathname.startsWith('/dashboard/roles'))}>Roles</Link></li>
+          <li><Link href="/dashboard/permissions" style={navLinkStyles(pathname.startsWith('/dashboard/permissions'))}>Permissions</Link></li>
         </ul>
       </nav>
     </div>
