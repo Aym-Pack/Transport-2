@@ -48,6 +48,11 @@ export default function DashboardLayout({
           <li><Link href="/dashboard/users" style={navLinkStyles(pathname.startsWith('/dashboard/users'))}>User Management</Link></li>
           <li><Link href="/dashboard/roles" style={navLinkStyles(pathname.startsWith('/dashboard/roles'))}>Roles</Link></li>
           <li><Link href="/dashboard/permissions" style={navLinkStyles(pathname.startsWith('/dashboard/permissions'))}>Permissions</Link></li>
+
+          {/* Pricing Rules Links */}
+          <li style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid #ddd' }}><span style={{ fontSize: '0.9em', color: '#555' }}>Pricing Rules</span></li>
+          <li><Link href="/dashboard/pricing/tariffs" style={navLinkStyles(pathname.startsWith('/dashboard/pricing/tariffs'))}>Passenger Tariffs</Link></li>
+          <li><Link href="/dashboard/pricing/promotions" style={navLinkStyles(pathname.startsWith('/dashboard/pricing/promotions'))}>Promotions</Link></li>
         </ul>
       </nav>
     </div>
