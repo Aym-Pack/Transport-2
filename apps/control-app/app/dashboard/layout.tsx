@@ -55,6 +55,12 @@ export default function DashboardLayout({
           <li><Link href="/dashboard/pricing/promotions" style={navLinkStyles(pathname.startsWith('/dashboard/pricing/promotions'))}>Promotions</Link></li>
           <li><Link href="/dashboard/pricing/policies" style={navLinkStyles(pathname.startsWith('/dashboard/pricing/policies'))}>Policy Rules</Link></li>
           <li><Link href="/dashboard/pricing/loyalty/programs" style={navLinkStyles(pathname.startsWith('/dashboard/pricing/loyalty'))}>Loyalty Programs</Link></li>
+
+          {/* Operations Links */}
+          <li style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid #ddd' }}><span style={{ fontSize: '0.9em', color: '#555' }}>Operations</span></li>
+          <li><Link href="/dashboard/operations/schedules" style={navLinkStyles(pathname.startsWith('/dashboard/operations/schedules'))}>Schedules</Link></li>
+          <li><Link href="/dashboard/operations/staff" style={navLinkStyles(pathname.startsWith('/dashboard/operations/staff'))}>Staff Members</Link></li>
+          <li><Link href="/dashboard/operations/departures" style={navLinkStyles(pathname.startsWith('/dashboard/operations/departures'))}>Departures</Link></li>
         </ul>
       </nav>
     </div>
