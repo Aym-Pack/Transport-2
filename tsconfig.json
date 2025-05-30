@@ -6,8 +6,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "composite": true, 
-    "declaration": true, 
+    "composite": true,
+    "declaration": true,
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
@@ -15,5 +15,5 @@
       "@samatransport/lib-core/*": ["packages/lib-core/src/*"]
     }
   },
-  "exclude": ["node_modules", "**/dist", "apps", "packages"] 
+  "exclude": ["node_modules", "**/dist", "apps", "packages"]
 }

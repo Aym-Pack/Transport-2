@@ -84,7 +84,7 @@ export default function NewVehiclePage() {
   if (loadingRelatedData) {
     return <p>Loading form dependencies...</p>;
   }
-  
+
   if (formError && agencies.length === 0 && vehicleTypes.length === 0) {
       return <p style={{ color: 'red' }}>Error loading form: {formError}</p>;
   }

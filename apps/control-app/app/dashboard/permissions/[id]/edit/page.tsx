@@ -67,7 +67,7 @@ export default function EditPermissionPage() {
     setFormError(null);
     try {
       // The ID is part of formData if initialData had it, but endpoint expects it in query
-      const { id: formId, ...updatePayload } = formData; 
+      const { id: formId, ...updatePayload } = formData;
       const response = await fetch(`${SUPABASE_FUNCTIONS_BASE_URL}/crud-permissions?id=${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -106,7 +106,7 @@ export default function EditPermissionPage() {
       </>
     );
   }
-  
+
   if (formError && !initialData) {
      return (
       <>

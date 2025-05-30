@@ -83,15 +83,15 @@ export default function PassengerTariffsPage() {
   const columns: ColumnDefinition<PassengerTariff>[] = [
     { header: 'Name', accessor: 'name' },
     { header: 'Category', accessor: 'passenger_category' },
-    { 
-      header: 'Price', 
-      accessor: (row) => `${row.price.toFixed(2)} ${row.currencies?.symbol || row.currency_code}` 
+    {
+      header: 'Price',
+      accessor: (row) => `${row.price.toFixed(2)} ${row.currencies?.symbol || row.currency_code}`
     },
     { header: 'Route', accessor: (row) => row.routes?.name || 'General' },
     { header: 'Vehicle Type', accessor: (row) => row.vehicle_types?.name || 'General' },
-    { 
-      header: 'Days', 
-      accessor: (row) => row.days_of_week && row.days_of_week.length > 0 ? row.days_of_week.join(',') : 'All' 
+    {
+      header: 'Days',
+      accessor: (row) => row.days_of_week && row.days_of_week.length > 0 ? row.days_of_week.join(',') : 'All'
     },
     { header: 'Status', accessor: (row) => (row.is_active ? 'Active' : 'Inactive') },
     {

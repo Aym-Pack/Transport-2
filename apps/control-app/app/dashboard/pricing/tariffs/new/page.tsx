@@ -16,7 +16,7 @@ export default function NewPassengerTariffPage() {
   const router = useRouter();
   const [isSaving, setIsSaving] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
-  
+
   const [routesList, setRoutesList] = useState<SelectOption[]>([]);
   const [vehicleTypesList, setVehicleTypesList] = useState<SelectOption[]>([]);
   const [currenciesList, setCurrenciesList] = useState<SelectOption[]>([]);
@@ -86,7 +86,7 @@ export default function NewPassengerTariffPage() {
   if (loadingRelatedData) {
     return <p>Loading form dependencies...</p>;
   }
-  
+
   if (formError && routesList.length === 0 && vehicleTypesList.length === 0 && currenciesList.length === 0) {
       return <p style={{ color: 'red' }}>Error loading form: {formError}</p>;
   }

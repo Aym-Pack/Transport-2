@@ -16,7 +16,7 @@ export default function NewPromotionPage() {
   const router = useRouter();
   const [isSaving, setIsSaving] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
-  
+
   const [tariffsList, setTariffsList] = useState<SelectOption[]>([]);
   const [routesList, setRoutesList] = useState<SelectOption[]>([]);
   const [vehicleTypesList, setVehicleTypesList] = useState<SelectOption[]>([]);
@@ -86,7 +86,7 @@ export default function NewPromotionPage() {
   if (loadingRelatedData) {
     return <p>Loading form dependencies...</p>;
   }
-  
+
   if (formError && tariffsList.length === 0 && routesList.length === 0 && vehicleTypesList.length === 0) {
       return <p style={{ color: 'red' }}>Error loading form: {formError}</p>;
   }

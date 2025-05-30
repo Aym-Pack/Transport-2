@@ -89,7 +89,7 @@ export default function EditVehicleTypePage() {
       </>
     );
   }
-  
+
   if (!initialData) {
       return <p>Vehicle Type not found.</p>;
   }

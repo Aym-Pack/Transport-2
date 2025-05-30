@@ -119,7 +119,7 @@ export const PromotionForm: React.FC<PromotionFormProps> = ({
       return newSet;
     });
   };
-  
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
@@ -172,7 +172,7 @@ export const PromotionForm: React.FC<PromotionFormProps> = ({
     if (!validateForm()) {
       return;
     }
-    
+
     const submissionData: PromotionFormData = {
       id: formData.id,
       name: formData.name,
@@ -191,7 +191,7 @@ export const PromotionForm: React.FC<PromotionFormProps> = ({
     };
     await onSubmit(submissionData);
   };
-  
+
   const discountTypeOptions: SelectOption[] = [
     { value: 'PERCENTAGE', label: 'Percentage (%)' },
     { value: 'FIXED_AMOUNT', label: 'Fixed Amount' },
@@ -204,7 +204,7 @@ export const PromotionForm: React.FC<PromotionFormProps> = ({
       <Input label="Promotion Name" name="name" value={formData.name} onChange={handleChange} error={fieldErrors.name} required maxLength={100}/>
       <Textarea label="Description (Optional)" name="description" value={formData.description} onChange={handleChange} error={fieldErrors.description} rows={3}/>
       <Input label="Promo Code (Optional)" name="promo_code" value={formData.promo_code} onChange={handleChange} error={fieldErrors.promo_code} maxLength={50}/>
-      
+
       <div style={{display: 'flex', gap: '1rem'}}>
         <Select label="Discount Type" name="discount_type" value={formData.discount_type} onChange={handleChange} options={discountTypeOptions} error={fieldErrors.discount_type} required/>
         <Input label="Discount Value" name="discount_value_str" type="text" value={formData.discount_value_str} onChange={handleChange} error={fieldErrors.discount_value_str} required placeholder="e.g., 10 or 10.50"/>
@@ -228,7 +228,7 @@ export const PromotionForm: React.FC<PromotionFormProps> = ({
           </div>
         </div>
       )}
-      
+
       <div style={{ margin: '1rem 0', padding: '1rem', border: '1px solid #ccc', borderRadius: '4px' }}>
         <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Restrict to Specific Routes (Optional):</label>
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>

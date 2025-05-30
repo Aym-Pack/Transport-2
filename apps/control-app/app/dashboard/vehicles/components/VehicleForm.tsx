@@ -94,7 +94,7 @@ export const VehicleForm: React.FC<VehicleFormProps> = ({
     const errors: Partial<Record<keyof FormState, string>> = {};
     if (!formData.registration_number.trim()) errors.registration_number = 'Registration number is required.';
     if (!formData.vehicle_type_id) errors.vehicle_type_id = 'Vehicle type is required.';
-    
+
     if (formData.year_of_manufacture_str) {
         const year = parseInt(formData.year_of_manufacture_str, 10);
         if (isNaN(year) || year < 1900 || year > new Date().getFullYear() + 1) {
@@ -119,7 +119,7 @@ export const VehicleForm: React.FC<VehicleFormProps> = ({
     if (!validateForm()) {
       return;
     }
-    
+
     const submissionData: VehicleFormData = {
       ...formData,
       year_of_manufacture: formData.year_of_manufacture_str ? parseInt(formData.year_of_manufacture_str, 10) : null,

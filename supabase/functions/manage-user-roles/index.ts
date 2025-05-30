@@ -64,7 +64,7 @@ serve(async (req) => {
           .from('user_roles')
           .insert(newRoles)
           .select('roles (id, name)') // Select the role details for the response
-        
+
         if (insertError) throw insertError
         newRolesData = data ? data.map((ur: any) => ur.roles) : [];
       }

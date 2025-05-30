@@ -53,6 +53,8 @@ export default function DashboardLayout({
           <li style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid #ddd' }}><span style={{ fontSize: '0.9em', color: '#555' }}>Pricing Rules</span></li>
           <li><Link href="/dashboard/pricing/tariffs" style={navLinkStyles(pathname.startsWith('/dashboard/pricing/tariffs'))}>Passenger Tariffs</Link></li>
           <li><Link href="/dashboard/pricing/promotions" style={navLinkStyles(pathname.startsWith('/dashboard/pricing/promotions'))}>Promotions</Link></li>
+          <li><Link href="/dashboard/pricing/policies" style={navLinkStyles(pathname.startsWith('/dashboard/pricing/policies'))}>Policy Rules</Link></li>
+          <li><Link href="/dashboard/pricing/loyalty/programs" style={navLinkStyles(pathname.startsWith('/dashboard/pricing/loyalty'))}>Loyalty Programs</Link></li>
         </ul>
       </nav>
     </div>

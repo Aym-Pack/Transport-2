@@ -77,7 +77,7 @@ export default function PromotionsPage() {
       }
     }
   };
-  
+
   const formatDateTime = (isoString: string) => {
     return new Date(isoString).toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short'});
   }
@@ -85,9 +85,9 @@ export default function PromotionsPage() {
   const columns: ColumnDefinition<Promotion>[] = [
     { header: 'Name', accessor: 'name' },
     { header: 'Code', accessor: (row) => row.promo_code || '-' },
-    { 
-      header: 'Discount', 
-      accessor: (row) => `${row.discount_value}${row.discount_type === 'PERCENTAGE' ? '%' : ' (Fixed)'}` 
+    {
+      header: 'Discount',
+      accessor: (row) => `${row.discount_value}${row.discount_type === 'PERCENTAGE' ? '%' : ' (Fixed)'}`
     },
     { header: 'Valid From', accessor: (row) => formatDateTime(row.valid_from) },
     { header: 'Valid Until', accessor: (row) => formatDateTime(row.valid_until) },

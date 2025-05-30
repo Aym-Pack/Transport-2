@@ -73,7 +73,7 @@ export const RouteForm: React.FC<RouteFormProps> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value, type } = e.target;
-    
+
     if (type === 'checkbox') {
       const { checked } = e.target as HTMLInputElement;
       setFormData((prev) => ({ ...prev, [name]: checked }));
@@ -115,7 +115,7 @@ export const RouteForm: React.FC<RouteFormProps> = ({
     if (!validateForm()) {
       return;
     }
-    
+
     const submissionData: RouteFormData = {
       ...formData,
       average_duration_minutes: formData.average_duration_minutes_str ? parseInt(formData.average_duration_minutes_str, 10) : null,

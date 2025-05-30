@@ -119,7 +119,7 @@ export default function EditVehiclePage() {
       </>
     );
   }
-  
+
   if (!initialData) {
       return <p>Vehicle not found.</p>;
   }

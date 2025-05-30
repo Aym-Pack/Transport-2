@@ -127,7 +127,7 @@ export default function EditExchangeRatePage() {
       </>
     );
   }
-  
+
   if (formError && !initialData) { // If there was a fetch error other than not found
      return (
       <>

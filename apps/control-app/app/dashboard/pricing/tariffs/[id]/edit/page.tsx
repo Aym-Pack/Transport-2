@@ -30,11 +30,11 @@ export default function EditPassengerTariffPage() {
   const [initialData, setInitialData] = useState<Partial<PassengerTariffFormData> | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
-  
+
   const [routesList, setRoutesList] = useState<SelectOption[]>([]);
   const [vehicleTypesList, setVehicleTypesList] = useState<SelectOption[]>([]);
   const [currenciesList, setCurrenciesList] = useState<SelectOption[]>([]);
-  
+
   const [loadingData, setLoadingData] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
@@ -143,7 +143,7 @@ export default function EditPassengerTariffPage() {
       </>
     );
   }
-  
+
   if (formError && !initialData) {
      return (
       <>

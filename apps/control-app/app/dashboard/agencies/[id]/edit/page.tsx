@@ -107,7 +107,7 @@ export default function EditAgencyPage() {
       </>
     );
   }
-  
+
   if (!initialData) { // Should be caught by loading or error state, but as a fallback
       return <p>Agency not found.</p>;
   }

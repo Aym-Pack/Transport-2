@@ -63,7 +63,7 @@ serve(async (req) => {
           }
           throw error
         }
-        
+
         if (rateId && !data) { // Should be caught by PGRST116, but as a safeguard
              return new Response(JSON.stringify({ error: 'Exchange rate not found' }), {
               headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -150,7 +150,7 @@ serve(async (req) => {
                 status: 404,
             });
         }
-        
+
         const { error } = await supabaseAdmin
           .from('exchange_rates')
           .delete()

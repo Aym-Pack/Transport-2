@@ -91,7 +91,7 @@ export default function EditCurrencyPage() {
       </>
     );
   }
-  
+
   if (!initialData) {
       return <p>Currency not found.</p>;
   }

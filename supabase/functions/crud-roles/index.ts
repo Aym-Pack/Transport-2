@@ -40,7 +40,7 @@ serve(async (req) => {
         const { error: insertError } = await supabaseAdmin
           .from('role_permissions')
           .insert(newPermissions)
-        
+
         if (insertError) throw insertError
       }
 
@@ -81,7 +81,7 @@ serve(async (req) => {
             .select('*')
             .eq('id', roleId)
             .single()
-          
+
           if (roleError) {
             if (roleError.code === 'PGRST116') { // Not found
                 return new Response(JSON.stringify({ error: 'Role not found' }), {
@@ -102,11 +102,11 @@ serve(async (req) => {
             .from('role_permissions')
             .select('permission_id')
             .eq('role_id', roleId)
-          
+
           if (permError) throw permError
 
           const permission_ids = permissionsData ? permissionsData.map(p => p.permission_id) : []
-          
+
           return new Response(JSON.stringify({ ...roleData, permission_ids }), {
             headers: { ...corsHeaders, 'Content-Type': 'application/json' },
             status: 200,
@@ -192,7 +192,7 @@ serve(async (req) => {
                 status: 404,
             });
         }
-        
+
         // ON DELETE CASCADE should handle role_permissions and user_roles
         const { error } = await supabaseAdmin
           .from('roles')
@@ -201,7 +201,7 @@ serve(async (req) => {
 
         if (error) {
             // Example: FK constraint error if ON DELETE CASCADE wasn't set (though it should be)
-            if (error.code === '23503') { 
+            if (error.code === '23503') {
                 return new Response(JSON.stringify({ error: 'Cannot delete role: it is still referenced by other tables that do not have ON DELETE CASCADE configured.' }), {
                     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
                     status: 409, // Conflict

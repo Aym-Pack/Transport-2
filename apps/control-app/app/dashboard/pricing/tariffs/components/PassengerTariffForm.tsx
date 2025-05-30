@@ -112,7 +112,7 @@ export const PassengerTariffForm: React.FC<PassengerTariffFormProps> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value, type } = e.target;
-    
+
     if (type === 'checkbox' && name !== 'is_active') { // Handling days_of_week checkboxes
       const { checked, value: dayValue } = e.target as HTMLInputElement;
       setFormData(prev => {
@@ -157,7 +157,7 @@ export const PassengerTariffForm: React.FC<PassengerTariffFormProps> = ({
             errors.valid_until_str = '"Valid Until" date must be after or same as "Valid From" date.';
         }
     }
-    
+
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -167,7 +167,7 @@ export const PassengerTariffForm: React.FC<PassengerTariffFormProps> = ({
     if (!validateForm()) {
       return;
     }
-    
+
     const submissionData: PassengerTariffFormData = {
       id: formData.id,
       name: formData.name,
@@ -185,7 +185,7 @@ export const PassengerTariffForm: React.FC<PassengerTariffFormProps> = ({
 
     await onSubmit(submissionData);
   };
-  
+
   const noneOption = { value: '', label: 'None / General' };
 
 
@@ -197,7 +197,7 @@ export const PassengerTariffForm: React.FC<PassengerTariffFormProps> = ({
       <Input label="Passenger Category (e.g., ADULT, CHILD)" name="passenger_category" value={formData.passenger_category} onChange={handleChange} error={fieldErrors.passenger_category} required maxLength={50}/>
       <Input label="Price" name="price_str" type="text" value={formData.price_str} onChange={handleChange} error={fieldErrors.price_str} required placeholder="e.g., 150.00"/>
       <Select label="Currency" name="currency_code" value={formData.currency_code} onChange={handleChange} options={currenciesList} error={fieldErrors.currency_code} required/>
-      
+
       <Select label="Route (Optional)" name="route_id_str" value={formData.route_id_str} onChange={handleChange} options={[noneOption, ...routesList]} error={fieldErrors.route_id_str} />
       <Select label="Vehicle Type (Optional)" name="vehicle_type_id_str" value={formData.vehicle_type_id_str} onChange={handleChange} options={[noneOption, ...vehicleTypesList]} error={fieldErrors.vehicle_type_id_str} />
 

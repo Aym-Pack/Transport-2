@@ -76,7 +76,7 @@ export default function NewExchangeRatePage() {
   if (loadingCurrencies) {
     return <p>Loading currency data for form...</p>;
   }
-  
+
   if (formError && currencies.length === 0) {
       return <p style={{ color: 'red' }}>Error loading form dependencies: {formError}</p>;
   }

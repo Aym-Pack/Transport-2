@@ -114,7 +114,7 @@ export default function EditUserRolesPage() {
       alert('User roles updated successfully!');
       // Optionally, refetch user data or update local state if response contains updated roles
       // For now, we'll just navigate back or let the user see the changes on next load
-      router.push('/dashboard/users'); 
+      router.push('/dashboard/users');
     } catch (error: any) {
       console.error("Error saving user roles:", error);
       setFormError(error.message || 'An unexpected error occurred.');
@@ -147,7 +147,7 @@ export default function EditUserRolesPage() {
   return (
     <>
       <PageHeader title={`Edit Roles for: ${userData.profile?.full_name || userData.email || 'User'}`} />
-      
+
       <div style={{ marginBottom: '1rem' }}>
         <p><strong>User ID:</strong> {userData.id}</p>
         <p><strong>Email:</strong> {userData.email || 'N/A'}</p>
@@ -158,7 +158,7 @@ export default function EditUserRolesPage() {
       <div style={{ padding: '1.5rem', border: '1px solid #eee', borderRadius: '8px', background: '#fff' }}>
         <h3>Assign Roles</h3>
         {formError && <p style={{ color: 'red', marginBottom: '1rem' }}>{formError}</p>}
-        
+
         <div style={{ maxHeight: '400px', overflowY: 'auto', marginBottom: '1rem' }}>
           {allRoles.length === 0 && <p>No roles available to assign.</p>}
           {allRoles.map(role => (

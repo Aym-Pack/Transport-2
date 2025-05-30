@@ -90,7 +90,7 @@ serve(async (req) => {
             .from(APPLICABLE_TARIFFS_TABLE)
             .insert(tariffsToInsert)
             .select('passenger_tariff_id');
-          
+
           if (tariffsError) {
             // Attempt to delete the already created promotion if linking tariffs fails
             await supabaseAdmin.from(PROMOTIONS_TABLE).delete().eq('id', promotionData.id);
@@ -134,7 +134,7 @@ serve(async (req) => {
             if (tariffsError) throw tariffsError;
             tariffIds = applicableTariffs ? applicableTariffs.map(t => t.passenger_tariff_id.toString()) : [];
           }
-          
+
           return new Response(JSON.stringify({ ...promotionData, passenger_tariff_ids: tariffIds }), {
             headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 200,
           })
@@ -142,7 +142,7 @@ serve(async (req) => {
         } else { // List all
           if (url.searchParams.has('is_active')) query = query.eq('is_active', url.searchParams.get('is_active') === 'true')
           if (url.searchParams.has('promo_code')) query = query.ilike('promo_code', `%${url.searchParams.get('promo_code')}%`)
-          
+
           query = query.order('name');
           const { data, error } = await query;
           if (error) throw error;
@@ -164,7 +164,7 @@ serve(async (req) => {
         }
         const body = await req.json()
         const { passenger_tariff_ids, ...promotionUpdates } = body;
-        
+
         // Validate promotion fields before update
         if (promotionUpdates.discount_value !== undefined && (typeof promotionUpdates.discount_value !== 'number' || promotionUpdates.discount_value <= 0)) {
              return new Response(JSON.stringify({ error: 'Discount value must be a positive number.' }), {
@@ -197,7 +197,7 @@ serve(async (req) => {
           .single()
 
         if (updateError) {
-            if (updateError.code === 'PGRST116') { 
+            if (updateError.code === 'PGRST116') {
                 return new Response(JSON.stringify({ error: 'Promotion not found' }), {
                     headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 404,
                 });
@@ -249,7 +249,7 @@ serve(async (req) => {
                 updatedTariffIds = currentTariffs ? currentTariffs.map(t => t.passenger_tariff_id.toString()) : [];
             }
         }
-        
+
         return new Response(JSON.stringify({ ...updatedPromotionData, passenger_tariff_ids: updatedTariffIds }), {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 200,
         })

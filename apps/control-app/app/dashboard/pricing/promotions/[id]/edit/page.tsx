@@ -27,11 +27,11 @@ export default function EditPromotionPage() {
   const [initialData, setInitialData] = useState<Partial<PromotionFormData> | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
-  
+
   const [tariffsList, setTariffsList] = useState<SelectOption[]>([]);
   const [routesList, setRoutesList] = useState<SelectOption[]>([]);
   const [vehicleTypesList, setVehicleTypesList] = useState<SelectOption[]>([]);
-  
+
   const [loadingData, setLoadingData] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
@@ -142,7 +142,7 @@ export default function EditPromotionPage() {
       </>
     );
   }
-  
+
   if (formError && !initialData) {
      return (
       <>

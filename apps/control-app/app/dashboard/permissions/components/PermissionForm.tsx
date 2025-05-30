@@ -95,7 +95,7 @@ export const PermissionForm: React.FC<PermissionFormProps> = ({
         maxLength={100}
         placeholder="module:action"
         // Consider disabling if initialData.id exists (meaning it's an edit and action might be immutable)
-        // disabled={!!initialData?.id} 
+        // disabled={!!initialData?.id}
         // style={!!initialData?.id ? { backgroundColor: '#e9ecef', cursor: 'not-allowed' } : {}}
       />
       <Textarea

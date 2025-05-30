@@ -67,7 +67,7 @@ export const VehicleTypeForm: React.FC<VehicleTypeFormProps> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value, type } = e.target;
-    
+
     if (type === 'checkbox') {
       const { checked } = e.target as HTMLInputElement;
       setFormData((prev) => ({ ...prev, [name]: checked }));
@@ -97,7 +97,7 @@ export const VehicleTypeForm: React.FC<VehicleTypeFormProps> = ({
     if (!validateForm()) {
       return;
     }
-    
+
     const submissionData: VehicleTypeFormData = {
       ...formData,
       capacity_passengers: formData.capacity_passengers_str ? parseInt(formData.capacity_passengers_str, 10) : null,

@@ -93,12 +93,12 @@ serve(async (req) => {
           if (url.searchParams.has('vehicle_type_id')) query = query.eq('vehicle_type_id', url.searchParams.get('vehicle_type_id'))
           if (url.searchParams.has('passenger_category')) query = query.eq('passenger_category', url.searchParams.get('passenger_category'))
           if (url.searchParams.has('is_active')) query = query.eq('is_active', url.searchParams.get('is_active') === 'true')
-          
+
           query = query.order('name')
         }
 
         const { data, error } = await query
-        
+
         if (error) {
             if (error.code === 'PGRST116' && tariffId) { // Not found for single GET
                 return new Response(JSON.stringify({ error: 'Tariff not found' }), {
@@ -169,7 +169,7 @@ serve(async (req) => {
             }
             updatePayload.days_of_week = days_of_week;
         }
-        
+
         if (Object.keys(updatePayload).length === 0) {
              return new Response(JSON.stringify({ error: 'No valid fields to update provided' }), {
                 headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400,
@@ -185,7 +185,7 @@ serve(async (req) => {
           .single()
 
         if (error) {
-            if (error.code === 'PGRST116') { 
+            if (error.code === 'PGRST116') {
                 return new Response(JSON.stringify({ error: 'Tariff not found' }), {
                     headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 404,
                 });

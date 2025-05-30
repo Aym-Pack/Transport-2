@@ -92,7 +92,7 @@ export const ExchangeRateForm: React.FC<ExchangeRateFormProps> = ({
     if (!validateForm()) {
       return;
     }
-    
+
     const submissionData: ExchangeRateFormData = {
       ...formData,
       rate: parseFloat(formData.rate_str),

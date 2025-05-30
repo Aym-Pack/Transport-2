@@ -48,7 +48,7 @@ serve(async (req) => {
             .select('*')
             .eq('id', permissionId)
             .single()
-          
+
           if (error) {
              if (error.code === 'PGRST116') { // Not found
                 return new Response(JSON.stringify({ error: 'Permission not found' }), {
@@ -105,7 +105,7 @@ serve(async (req) => {
           .single()
 
         if (error) {
-            if (error.code === 'PGRST116') { 
+            if (error.code === 'PGRST116') {
                 return new Response(JSON.stringify({ error: 'Permission not found' }), {
                     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
                     status: 404,
@@ -163,7 +163,7 @@ serve(async (req) => {
 
         if (error) {
              // Example: FK constraint error if ON DELETE CASCADE wasn't set on role_permissions (though it should be)
-            if (error.code === '23503') { 
+            if (error.code === '23503') {
                 return new Response(JSON.stringify({ error: 'Cannot delete permission: it is still referenced by role_permissions table and ON DELETE CASCADE is not working.' }), {
                     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
                     status: 409, // Conflict

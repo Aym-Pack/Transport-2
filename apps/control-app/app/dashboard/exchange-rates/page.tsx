@@ -73,8 +73,8 @@ export default function ExchangeRatesPage() {
   const columns: ColumnDefinition<ExchangeRate>[] = [
     { header: 'Source Currency', accessor: 'source_currency_code' },
     { header: 'Target Currency', accessor: 'target_currency_code' },
-    { 
-      header: 'Rate', 
+    {
+      header: 'Rate',
       accessor: (row) => row.rate.toFixed(6) // Display rate with precision
     },
     { header: 'Source of Rate', accessor: (row) => row.source_of_rate || '-' },

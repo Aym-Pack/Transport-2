@@ -68,7 +68,7 @@ serve(async (req) => {
           if (statusFilter) query = query.eq('status', statusFilter)
           if (vehicleTypeIdFilter) query = query.eq('vehicle_type_id', vehicleTypeIdFilter)
           if (agencyIdFilter) query = query.eq('assigned_agency_id', agencyIdFilter)
-          
+
           query = query.order('registration_number')
         }
 

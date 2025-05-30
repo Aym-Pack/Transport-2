@@ -173,7 +173,7 @@ export default function EditRolePage() {
   return (
     <>
       <PageHeader title={`Edit Role: ${roleDetails.name}`} />
-      
+
       <div style={{ marginBottom: '2rem', padding: '1.5rem', border: '1px solid #eee', borderRadius: '8px', background: '#fff' }}>
         <h3>Role Details</h3>
         <RoleForm
