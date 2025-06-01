@@ -10,17 +10,22 @@ export interface LoyaltyProgram {
   id: string; // BIGINT from DB, string in JS
   name: string;
   description?: string | null;
-  points_per_currency_unit_spent: number;
-  base_currency_code_for_points: string; // This will be just the code
+  points_per_currency_unit_spent?: number | null;
+  base_currency_code_for_points?: string | null; // This will be just the code or the joined object
   is_active: boolean;
   created_at?: string;
   updated_at?: string;
-  // Joined data for currency
-  currencies?: { // Supabase uses the FK field name as the key for joined object if not aliased
-    code: string;
-    name: string;
-    symbol: string | null;
-  };
+  earning_rule_type?: 'PER_CURRENCY_UNIT_SPENT' | 'PER_TRANSACTION' | 'PER_ITEM_QUANTITY';
+  fixed_points_per_transaction?: number | null;
+  points_per_item?: number | null;
+  item_unit_description?: string | null;
+  // Joined data for currency - assuming it might still be nested under base_currency_code_for_points
+  // if the earning rule is PER_CURRENCY_UNIT_SPENT and the Supabase query returns it as an object.
+  // Or, it could be directly `currencies` if that's how the query is structured.
+  // For flexibility, we'll primarily rely on base_currency_code_for_points being either string or object.
+  // It seems the query returns the joined currency object directly replacing the FK field:
+  // `base_currency_code_for_points:currencies(code, name, symbol)`
+  // So, `base_currency_code_for_points` can be `string` (if not joined/null) or an object.
 }
 
 const SUPABASE_FUNCTIONS_BASE_URL = process.env.NEXT_PUBLIC_SUPABASE_FUNCTIONS_URL || 'http://localhost:54321/functions/v1';
@@ -91,11 +96,40 @@ export default function LoyaltyProgramsPage() {
     { header: 'Name', accessor: 'name' },
     {
       header: 'Points Rule',
-      accessor: (row) => `${row.points_per_currency_unit_spent} pts / ${row.base_currency_code_for_points?.code || row.base_currency_code_for_points}`
-    }, // Accessing joined currency data
+      accessor: (row) => {
+        const ruleType = row.earning_rule_type || 'PER_CURRENCY_UNIT_SPENT'; // Default for older data
+        if (ruleType === 'PER_CURRENCY_UNIT_SPENT') {
+          const currencyData = typeof row.base_currency_code_for_points === 'object'
+            ? row.base_currency_code_for_points
+            : { code: row.base_currency_code_for_points }; // Handle case where it's just a string code
+          return `${row.points_per_currency_unit_spent || 0} pts / ${currencyData?.code || 'N/A'}`;
+        }
+        if (ruleType === 'PER_TRANSACTION') {
+          return `${row.fixed_points_per_transaction || 0} pts / transaction`;
+        }
+        if (ruleType === 'PER_ITEM_QUANTITY') {
+          return `${row.points_per_item || 0} pts / ${row.item_unit_description || 'item'}`;
+        }
+        return 'N/A';
+      }
+    },
     {
-      header: 'Base Currency',
-      accessor: (row) => `${row.base_currency_code_for_points?.name || row.base_currency_code_for_points} (${row.base_currency_code_for_points?.symbol || row.base_currency_code_for_points?.code})`
+      header: 'Rule Details', // Changed from 'Base Currency' to be more generic
+      accessor: (row) => {
+        const ruleType = row.earning_rule_type || 'PER_CURRENCY_UNIT_SPENT';
+        if (ruleType === 'PER_CURRENCY_UNIT_SPENT') {
+           const currencyData = typeof row.base_currency_code_for_points === 'object'
+            ? row.base_currency_code_for_points
+            : null; // If it's just a string, we might not have name/symbol here.
+          return currencyData
+            ? `${currencyData.name} (${currencyData.symbol || currencyData.code})`
+            : (typeof row.base_currency_code_for_points === 'string' ? row.base_currency_code_for_points : 'N/A');
+        }
+        if (ruleType === 'PER_ITEM_QUANTITY' && row.item_unit_description) {
+          return `Unit: ${row.item_unit_description}`;
+        }
+        return 'N/A';
+      }
     },
     { header: 'Active', accessor: (row) => (row.is_active ? 'Yes' : 'No') },
     {
