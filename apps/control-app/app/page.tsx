@@ -1,4 +1,6 @@
 // apps/control-app/app/page.tsx
+import Dashboard from '../components/Dashboard';
+
 export default function Page() {
-  return <h1>Welcome to Control App</h1>;
+  return <Dashboard />;
 }

@@ -105,9 +105,18 @@ export default function UsersPage() {
   if (loading) return <p>Loading users...</p>;
   if (error) return <p style={{ color: 'red' }}>Error loading users: {error}</p>;
 
+  const router = useRouter(); // Added for navigation
+
   return (
     <>
-      <PageHeader title="User Management" />
+      <PageHeader
+        title="User Management"
+        actions={
+          <Button onClick={() => router.push('/dashboard/users/create')}>
+            Create User
+          </Button>
+        }
+      />
       <DataTable data={usersWithRoles} columns={columns} />
        <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'space-between' }}>
         <Button onClick={handlePreviousPage} disabled={pagination.page === 1 || loading}>

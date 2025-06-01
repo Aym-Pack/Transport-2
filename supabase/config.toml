@@ -32,3 +32,24 @@ enable_signup = true
 # Example for a specific function if needed:
 # [functions.my_function_name]
 # verify_jwt = false
+
+[functions.create-user]
+handler = "create-user/index.ts"
+# verify_jwt = true # Assuming you want to protect this function, adjust as needed
+
+[functions.get-available-schedules]
+handler = "get-available-schedules/index.ts"
+# verify_jwt = false # Publicly accessible or protected via API gateway/user RLS on tables
+
+[functions.get-vehicle-details]
+handler = "get-vehicle-details/index.ts"
+# verify_jwt = true # Assuming only authenticated users can access
+
+[functions.get-booked-seats-for-departure]
+handler = "get-booked-seats-for-departure/index.ts"
+# verify_jwt = true # Assuming only authenticated users can access
+
+[functions.create-booking-final]
+handler = "create-booking-final/index.ts"
+verify_jwt = true # Should be protected, user or service role key needed
+# timeout_ms = 10000 # Consider increasing timeout if many seats are booked at once
