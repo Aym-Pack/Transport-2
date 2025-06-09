@@ -1,0 +1,15 @@
+{
+  "name": "@samatransport/mcp-clients",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "lint": "echo 'Lint mcp-clients'"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5"
+  }
+}

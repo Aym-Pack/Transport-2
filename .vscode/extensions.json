@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-french",
+    "firsttris.vscode-jest-runner",
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-typescript-next",
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "yoavbls.pretty-ts-errors",
+    "redhat.vscode-yaml",
+    "prisma.prisma", // If using Prisma
+    "supabase.supabase-vscode" // For Supabase integration
+  ],
+  "unwantedRecommendations": []
+}

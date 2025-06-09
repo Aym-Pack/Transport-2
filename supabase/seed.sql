@@ -1,0 +1,3 @@
+-- Supabase Seed Data
+-- Add initial data here, for example:
+-- INSERT INTO public.users (id, name) VALUES (gen_random_uuid(), 'Admin User');

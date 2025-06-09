@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# .husky/commit-msg
+#
+# Placeholder for commit message validation.
+# Example: npx --no-install commitlint --edit "$1"
+
+echo "husky: commit-msg hook (placeholder)"
+exit 0

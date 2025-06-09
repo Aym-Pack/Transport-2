@@ -1,0 +1,34 @@
+# Supabase Project Configuration
+
+project_id = "your-project-id" # Replace with your actual project ID from Supabase dashboard
+
+[api]
+port = 54321
+schemas = ["public", "storage", "graphql"]
+extra_search_path = ["extensions"]
+max_rows = 1000
+
+[db]
+port = 5432
+major_version = 15 # Or your Supabase Postgres version
+
+[studio]
+port = 54323
+
+# anon_key and service_role_key should be managed via .env files or secrets,
+# not hardcoded here for production.
+# For local development, Supabase CLI handles this.
+
+[auth]
+site_url = "http://localhost:3000" # Or your frontend URL
+additional_redirect_urls = ["http://localhost:3000/auth/callback"]
+enable_signup = true
+# Configure external OAuth providers, email templates, etc. here or in Supabase dashboard.
+
+[functions."*"] # Default settings for all functions
+# verify_jwt = true # Uncomment to enforce JWT verification for all functions by default
+# import_map = "./functions/import_map.json" # If using an import map
+
+# Example for a specific function if needed:
+# [functions.my_function_name]
+# verify_jwt = false

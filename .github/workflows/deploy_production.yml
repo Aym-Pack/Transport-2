@@ -1,0 +1,16 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main # Or your production branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+      # Add your deployment steps here
+      - name: Deploy to Production
+        run: echo "Deploying to Production..."

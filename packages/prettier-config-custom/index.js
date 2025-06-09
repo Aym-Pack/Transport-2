@@ -1,0 +1,10 @@
+// packages/prettier-config-custom/index.js
+module.exports = {
+  semi: true,
+  singleQuote: true,
+  jsxSingleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'es5',
+  printWidth: 100,
+  plugins: ['prettier-plugin-tailwindcss'],
+};

@@ -1,0 +1,10 @@
+{
+  "name": "prettier-config-custom",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.5.0"
+  }
+}
